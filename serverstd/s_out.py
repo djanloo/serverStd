@@ -18,7 +18,7 @@ current_msg = ""
 
 img_counter = 0
 msg_counter = 0
-
+err_counter = 0 
 
 def sprint(string):
     string = str(string)
@@ -35,15 +35,15 @@ def sprint(string):
 
 def sperr(string):
     string = str(string)
-    global current_msg, msg_counter
+    global current_msg, err_counter
     current_msg += errblock_string.format(
-        msg_counter=msg_counter,
+        msg_counter=err_counter,
         content=string,
         time=datetime.now().strftime("%H:%M:%S"),
     )
     with open(FILE, "w") as f:
         f.write(body_string.format(content=current_msg))
-    msg_counter += 1
+    err_counter += 1
 
 
 def splot(figure):
