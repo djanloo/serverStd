@@ -32,3 +32,4 @@ if not is_configured:
 
 from .s_out import ServerStderr as serverStderr
 from .s_out import ServerStdout as serverStdout
+from .s_out import sprint, sperr, splot
