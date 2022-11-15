@@ -4,7 +4,7 @@ import json
 old_dir = os.getcwd()
 packageDir = os.path.dirname(__file__)
 os.chdir(packageDir)
-    
+
 is_configured = False
 
 with open("conf.cf", "r") as conf:
@@ -13,6 +13,7 @@ with open("conf.cf", "r") as conf:
         is_configured = True
     except json.decoder.JSONDecodeError:
         is_configured = False
+
 if not is_configured:
     with open("conf.cf", "w") as conf:
         print("serverstd is not configured yet. Enter server root folder path:")
@@ -23,11 +24,11 @@ if not is_configured:
         else:
             json.dump(SERVER_FOLDER, conf)
             import shutil
+
             print("style sheet copied.")
             shutil.copy("style.css", f"{SERVER_FOLDER}/style.css")
             os.mkdir(f"{SERVER_FOLDER}/images")
-            
+
 
 from .s_out import ServerStderr as serverStderr
 from .s_out import ServerStdout as serverStdout
-
